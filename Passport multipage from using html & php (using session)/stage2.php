@@ -28,7 +28,7 @@ function data_sanitization($data)
  if(!isset($_SESSION['applicationID']))
  {
     $birthidno= $_SESSION['birthidno'];
-    $_SESSION['applicationID']= substr($birthidno, 9).rand(15,1000);
+    $_SESSION['applicationID']= substr($birthidno,9).rand(15,1000);
  }
  if (isset($_POST['submit2'])) 
 {
@@ -51,7 +51,7 @@ function data_sanitization($data)
 	$_SESSION['relationship']= data_sanitization($_POST['relationship']);
 	
 	
-   if (!preg_match("/^[0-9]{11}$/", $_POST['officeno'])) 
+   if (!preg_match("/^[0-9]{11}$/", $_POST['contactno'])) 
     {
       $_SESSION['error_form2'] = "Numbers Only";
       header("location: stage2.php");
@@ -106,7 +106,7 @@ function data_sanitization($data)
 			<td>Mobile No:</td>
 			<td><input type="text" name="mobileno"value="<?php echo isset($_SESSION['mobileno']) ? $_SESSION['mobileno'] : ''; ?>" /></td>
 			<td>Date of Issue:</td>
-			<td><input type="text"name="dateofissue"value="<?php echo isset($_SESSION['dateofissue']) ? $_SESSION['dateofissue'] : ''; ?>" /></td>
+			<td><input type="date"name="dateofissue"value="<?php echo isset($_SESSION['dateofissue']) ? $_SESSION['dateofissue'] : ''; ?>" /></td>
 			
 		</tr>
 		<tr>
@@ -171,7 +171,7 @@ function data_sanitization($data)
 			<td>District: <font color="red">*</font></td>
 			<td>
 				<select name="district2" required>
-					<option value="-select-">-SELECT-</option>
+					<option value="">-SELECT-</option>
 					<option value="dhaka"<?php echo OptionCheck("dhaka", "district2") ? "selected" : ''; ?> >Dhaka</option>
 					<option value="barguna"<?php echo OptionCheck("barguna", "district2") ? "selected" : ''; ?> >Barguna</option>
 					<option value="barisal"<?php echo OptionCheck("barisal", "district2") ? "selected" : ''; ?> >Barisal</option>
@@ -228,7 +228,7 @@ function data_sanitization($data)
 			<td>Relationship: <font color="red">*</font></td>
 			<td>
 				<select name="relationship" required>
-					<option value="-selcet-">-SELECT-</option>
+					<option value="">-SELECT-</option>
 					<option value="single"<?php echo OptionCheck("single", "relationship") ? "selected" : ''; ?> >Single</option>
 					<option value="married"<?php echo OptionCheck("married", "relationship") ? "selected" : ''; ?> >Married</option>
 					<option value="widow"<?php echo OptionCheck("widow", "relationship") ? "selected" : ''; ?> >Widow</option>

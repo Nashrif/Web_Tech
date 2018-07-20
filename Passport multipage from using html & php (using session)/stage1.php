@@ -1,72 +1,73 @@
 <?php
+
 session_start(); 
 
 
- function OptionCheck($option, $select)
- {
- 	if(isset($_SESSION[$select])) 
-	{
-		$select= $_SESSION[$select];
+function OptionCheck($option, $select)
+{
+  if(isset($_SESSION[$select])) 
+  {
+    $select= $_SESSION[$select];
 
-	 	if($option==$select)
-	 	{
-	 		return true;
-	 	}
-	}
+    if($option==$select)
+    {
+      return true;
+    }
+  }
 
- 	return false;
- }
+  return false;
+}
 
 function data_sanitization($data)
 {
-	$data= trim($data);
-	$data= stripcslashes($data);
-	$data= htmlspecialchars($data);
-	return $data;
-}
+  $data= trim($data);
+  $data= stripcslashes($data);
+  $data= htmlspecialchars($data);
+  return $data;
+}  
 if(isset($_POST['submit1']))
 {
-	$_SESSION['dateofbirth']=data_sanitization($POST['dateofbirth']);
-	$_SESSION['applyingin']=data_sanitization($POST['applyin']);
-	$_SESSION['birthidno']=data_sanitization($POST['birthidno']);
-	$_SESSION['gender']=data_sanitization($POST['gender']);
-	$_SESSION['passporttype']=data_sanitization($POST['passporttype']);
-	$_SESSION['nationalidno']=data_sanitization($POST['nationalidno']);
-	$_SESSION['delivery']=data_sanitization($POST['delivery']);
-	$_SESSION['taxidno']=data_sanitization($POST['taxidno']);
-	$_SESSION['height1']=data_sanitization($POST['height1']);
-	$_SESSION['height2']=data_sanitization($POST['height2']);
-	$_SESSION['nameofapplicant']=data_sanitization($POST['nameofapplicant']);
-	$_SESSION['religion']=data_sanitization($POST['religion']);
-	$_SESSION['firstpartname']=data_sanitization($POST['firstpartname']);
-	$_SESSION['email']=data_sanitization($POST['email']);
-	$_SESSION['secondpartname']=data_sanitization($POST['secondpartname']);
-	$_SESSION['nationality']=data_sanitization($POST['nationality']);
-	$_SESSION['citizenshipstatus']=data_sanitization($POST['citizenshipstatus']);
-	$_SESSION['fathersname']=data_sanitization($POST['fathersname']);
-	$_SESSION['dualcitizenship']=data_sanitization($POST['dualcitizenship']);
-	$_SESSION['fnationality']=data_sanitization($POST['fnationality']);
-	$_SESSION['fprofession']=data_sanitization($POST['fprofession']);
-	$_SESSION['presentvillage/house']=data_sanitization($POST['presentvillage/house']);
-	$_SESSION['mothrsname']=data_sanitization($POST['mothrsname']);
-	$_SESSION['presentroad/block/sector']=data_sanitization($POST['presentroad/block/sector']);
-	$_SESSION['mnationality']=data_sanitization($POST['mnationality']);
-	$_SESSION['presentdistrict']=data_sanitization($POST['presentdistrict']);
-	$_SESSION['mprofession']=data_sanitization($POST['mprofession']);
-	$_SESSION['policestation']=data_sanitization($POST['policestation']);
-	$_SESSION['spouesname']=data_sanitization($POST['spouesname']);
-	$_SESSION['presentpostoffice']=data_sanitization($POST['presentpostoffice']);
-	$_SESSION['snationality']=data_sanitization($POST['snationality']);
-	$_SESSION['sprofession']=data_sanitization($POST['sprofession']);
-	$_SESSION['meritalstatus']=data_sanitization($POST['meritalstatus']);
-	$_SESSION['pervillage/house']=data_sanitization($POST['pervillage/house']);
-	$_SESSION['applicantsprofession']=data_sanitization($POST['applicantsprofession']);
-	$_SESSION['perroad/block/sector']=data_sanitization($POST['perroad/block/sector']);
-	$_SESSION['countryofbirth']=data_sanitization($POST['countryofbirth']);
-	$_SESSION['perdistrict']=data_sanitization($POST['perdistrict']);
-	$_SESSION['birthdistrict']=data_sanitization($POST['birthdistrict']);
-	$_SESSION['perpolicestation']=data_sanitization($POST['perpolicestation']);
-	$_SESSION['perpostoffice']=data_sanitization($POST['perpostoffice']);
+	$_SESSION['dateofbirth']=data_sanitization($_POST['dateofbirth']);
+	$_SESSION['applyingin']=data_sanitization($_POST['applyingin']);
+	$_SESSION['birthidno']=data_sanitization($_POST['birthidno']);
+	$_SESSION['gender']=data_sanitization($_POST['gender']);
+	$_SESSION['passporttype']=data_sanitization($_POST['passporttype']);
+	$_SESSION['nationalidno']=data_sanitization($_POST['nationalidno']);
+	$_SESSION['delivery']=data_sanitization($_POST['delivery']);
+	$_SESSION['taxidno']=data_sanitization($_POST['taxidno']);
+	$_SESSION['height1']=data_sanitization($_POST['height1']);
+	$_SESSION['height2']=data_sanitization($_POST['height2']);
+	$_SESSION['nameofapplicant']=data_sanitization($_POST['nameofapplicant']);
+	$_SESSION['religion']=data_sanitization($_POST['religion']);
+	$_SESSION['firstpartname']=data_sanitization($_POST['firstpartname']);
+	$_SESSION['email']=data_sanitization($_POST['email']);
+	$_SESSION['secondpartname']=data_sanitization($_POST['secondpartname']);
+	$_SESSION['nationality']=data_sanitization($_POST['nationality']);
+	$_SESSION['citizenshipstatus']=data_sanitization($_POST['citizenshipstatus']);
+	$_SESSION['fathersname']=data_sanitization($_POST['fathersname']);
+	$_SESSION['dualcitizenship']=data_sanitization($_POST['dualcitizenship']);
+	$_SESSION['fnationality']=data_sanitization($_POST['fnationality']);
+	$_SESSION['fprofession']=data_sanitization($_POST['fprofession']);
+	$_SESSION['presentvillagehouse']=data_sanitization($_POST['presentvillagehouse']);
+	$_SESSION['mothersname']=data_sanitization($_POST['mothersname']);
+	$_SESSION['presentroadblocksector']=data_sanitization($_POST['presentroadblocksector']);
+	$_SESSION['mnationality']=data_sanitization($_POST['mnationality']);
+	$_SESSION['presentdistrict']=data_sanitization($_POST['presentdistrict']);
+	$_SESSION['mprofession']=data_sanitization($_POST['mprofession']);
+	$_SESSION['policestation']=data_sanitization($_POST['policestation']);
+	$_SESSION['spouesname']=data_sanitization($_POST['spouesname']);
+	$_SESSION['presentpostoffice']=data_sanitization($_POST['presentpostoffice']);
+	$_SESSION['snationality']=data_sanitization($_POST['snationality']);
+	$_SESSION['sprofession']=data_sanitization($_POST['sprofession']);
+	$_SESSION['meritalstatus']=data_sanitization($_POST['meritalstatus']);
+	$_SESSION['pervillagehouse']=data_sanitization($_POST['pervillagehouse']);
+	$_SESSION['applicantsprofession']=data_sanitization($_POST['applicantsprofession']);
+	$_SESSION['perroadblocksector']=data_sanitization($_POST['perroadblocksector']);
+	$_SESSION['countryofbirth']=data_sanitization($_POST['countryofbirth']);
+	$_SESSION['perdistrict']=data_sanitization($_POST['perdistrict']);
+	$_SESSION['birthdistrict']=data_sanitization($_POST['birthdistrict']);
+	$_SESSION['perpolicestation']=data_sanitization($_POST['perpolicestation']);
+	$_SESSION['perpostoffice']=data_sanitization($_POST['perpostoffice']);
 	
     if (!preg_match("/^([a-zA-Z\s'-]+\.)*[a-zA-Z\s'-]+$/", $_POST['fathersname'])) 
     {
@@ -78,6 +79,11 @@ if(isset($_POST['submit1']))
       $_SESSION['error'] = "Invalid Email";
       header("location: stage1.php");
     }
+	    elseif (!preg_match("/^([a-zA-Z\s'-]+\.)*[a-zA-Z\s'-]+$/", $_POST['secondpartname'])) 
+    {
+      $_SESSION['error'] = "Letters Only and (-,',.)";
+      header("location: stage1.php");
+    }
 	    else
     {
       foreach ($_POST as $key => $value) 
@@ -86,7 +92,8 @@ if(isset($_POST['submit1']))
       }
 
       header("Location: stage2.php");
-  	}
+    }
+ 
 }
 
 ?>
@@ -104,7 +111,7 @@ if(isset($_POST['submit1']))
 	<h4>Fields marked with <font color="red">(*)</font>are mandatory</h4>
 	<hr />
 	
-	<form action="stage2.php" method="post">
+	<form action="" method="post">
 	<table style="width:80%">
 		<tr>
 		
@@ -140,8 +147,8 @@ if(isset($_POST['submit1']))
 		<tr>
 			<td>Passport Type:<font color="red">*</font></td>
 			<td>
-				<select name="passporttype">
-  					<option value="A">-SELECT-</option>
+				<select name="passporttype" required>
+  					<option value=""></option>
  					<option value="ordinary"<?php echo OptionCheck("ordinary", "passporttype") ? "selected" : ''; ?> >ORDINARY</option>
   					<option value="diplomaticy"<?php echo OptionCheck("diplomaticy", "passporttype") ? "selected" : ''; ?> >DIPLOMATIC</option>							
 					<option value="official"<?php echo OptionCheck("official", "passporttype") ? "selected" : ''; ?> >OFFICIAL</option>
@@ -172,8 +179,8 @@ if(isset($_POST['submit1']))
 			<td><input type="text" name="nameofapplicant" value="<?php echo isset($_SESSION['nameofapplicant']) ? $_SESSION['nameofapplicant'] : ''; ?>"  required /></td>
 			<td>Religion: <font color="red">*</font></td>
 			<td>
-				<select name="religion">
-  					<option value="A">-SELECT-</option>
+				<select name="religion" required>
+  					<option value="">-SELECT-</option>
  					<option value="muslim"<?php echo OptionCheck("muslim", "religion") ? "selected" : ''; ?> >Muslim</option>
   					<option value="hindhu"<?php echo OptionCheck("hindhu", "religion") ? "selected" : ''; ?> >Hindhu</option>							
 					<option value="christianity"<?php echo OptionCheck("christianity", "religion") ? "selected" : ''; ?> >Christianity</option>
@@ -184,7 +191,7 @@ if(isset($_POST['submit1']))
 			<td>First Part (Given <br> applicant:</td>
 			<td><input type="text" name="firstpartname" value="<?php echo isset($_SESSION['firstpartname']) ? $_SESSION['firstpartname'] : ''; ?>"  /></td>
 			<td>Email : <font color="red">*</font></td>
-			<td><input type="email" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>"  required /></td>
+			<td><input type="email" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>" /></td>
 		</tr>
 		<tr>
 			<td>Second Part <br>(surname) <font color="red">*</font></td>
@@ -246,13 +253,13 @@ if(isset($_POST['submit1']))
 				</select>
 			</td>
 			<td>Village/House:</td>
-			<td><input type="text" name="presentvillage/house" value="<?php echo isset($_SESSION['presentvillage/house']) ? $_SESSION['presentvillage/house'] : ''; ?>"  /></td>
+			<td><input type="text" name="presentvillage/house" value="<?php echo isset($_SESSION['presentvillagehouse']) ? $_SESSION['presentvillagehouse'] : ''; ?>"  /></td>
 		</tr>
 		<tr>
 			<td>Mother's name: <font color="red">*</font></td>
-			<td><input type="text" name="mothrsname" value="<?php echo isset($_SESSION['mothrsname']) ? $_SESSION['mothrsname'] : ''; ?>"  /></td>
+			<td><input type="text" name="mothersname" value="<?php echo isset($_SESSION['mothersname']) ? $_SESSION['mothersname'] : ''; ?>"  /></td>
 			<td>Road/Block/Sector:</td>
-			<td><input type="text" name="presentroad/block/sector" value="<?php echo isset($_SESSION['presentroad/block/sector']) ? $_SESSION['presentroad/block/sector'] : ''; ?>" /></td>
+			<td><input type="text" name="presentroad/block/sector" value="<?php echo isset($_SESSION['presentroadblocksector']) ? $_SESSION['presentroadblocksector'] : ''; ?>" /></td>
 		</tr>
 		<tr>
 			<td>Mother's <br> Nationality: <font color="red">*</font> </td>
@@ -265,8 +272,8 @@ if(isset($_POST['submit1']))
 			</td>
 			<td>District <font color="red">*</font></td>
 			<td>
-				<select name="presentdistrict">
-					<option value="-select-">-SELECT-</option>
+				<select name="presentdistrict" required>
+					<option value="">-SELECT-</option>
 					<option value="dhaka"<?php echo OptionCheck("dhaka", "presentdistrict") ? "selected" : ''; ?> >Dhaka</option>
 					<option value="barguna"<?php echo OptionCheck("barguna", "presentdistrict") ? "selected" : ''; ?> >Barguna</option>
 					<option value="barisal"<?php echo OptionCheck("barisal", "presentdistrict") ? "selected" : ''; ?> >Barisal</option>
@@ -278,8 +285,8 @@ if(isset($_POST['submit1']))
 		<tr>
 			<td>Mother's <br>profession <font color="red">*</font></td>
 			<td>
-				<select name="mprofession">
-					<option value="-select-">-SELECT-</option>
+				<select name="mprofession" required>
+					<option value="">-SELECT-</option>
 					<option value="housewife"<?php echo OptionCheck("housewife", "mprofession") ? "selected" : ''; ?> >House wife</option>
 					<option value="teacher"<?php echo OptionCheck("teacher", "mprofession") ? "selected" : ''; ?> >Teacher</option>
 					<option value="businessman"<?php echo OptionCheck("businessman", "mprofession") ? "selected" : ''; ?> >businessman</option>
@@ -288,7 +295,7 @@ if(isset($_POST['submit1']))
 			</td>
 			<td>Police Station: <font color="red">*</font></td>
 			<td>
-				<select name="policestation">
+				<select name="policestation" required>
 					<option value="uttara"<?php echo OptionCheck("uttara", "policestation") ? "selected" : ''; ?> >Uttara</option>
 					<option value="mirpur"<?php echo OptionCheck("mirpur", "policestation") ? "selected" : ''; ?> >Mirpur</option>
 					<option value="turag"<?php echo OptionCheck("turag", "policestation") ? "selected" : ''; ?> >Turag</option>
@@ -301,7 +308,7 @@ if(isset($_POST['submit1']))
 			<td><input type="text" name="spouesname" value="<?php echo isset($_SESSION['spouesname']) ? $_SESSION['spouesname'] : ''; ?>"  /></td>
 			<td>Post Office: <font color="red">*</font></td>
 			<td>
-				<select name="presentpostoffice">
+				<select name="presentpostoffice" required>
 					<option value="uttara"<?php echo OptionCheck("uttara", "presentpostoffice") ? "selected" : ''; ?> >Uttara</option>
 					<option value="mirpur"<?php echo OptionCheck("mirpur", "presentpostoffice") ? "selected" : ''; ?> >Mirpur</option>
 					<option value="turag"<?php echo OptionCheck("turag", "presentpostoffice") ? "selected" : ''; ?> >Turag</option>
@@ -312,7 +319,7 @@ if(isset($_POST['submit1']))
 		<tr>
 			<td>Spouse's <br> Nationality: <font color="red">*</font> </td>
 			<td>
-				<select name="snationality">
+				<select name="snationality" required>
 					<option value="bangladeshi"<?php echo OptionCheck("bangladeshi", "snationality") ? "selected" : ''; ?> >BANGLADESHI</option>
 					<option value="indian"<?php echo OptionCheck("indian", "snationality") ? "selected" : ''; ?> >Indian</option>
 					<option value="australian"<?php echo OptionCheck("australian", "snationality") ? "selected" : ''; ?> >Australian</option>
@@ -324,8 +331,8 @@ if(isset($_POST['submit1']))
 		<tr>
 			<td>Spoues's <br>profession <font color="red">*</font></td>
 			<td>
-				<select name="sprofession">
-					<option value="-select-">-SELECT-</option>
+				<select name="sprofession" required>
+					<option value="">-SELECT-</option>
 					<option value="housewife"<?php echo OptionCheck("housewife", "sprofession") ? "selected" : ''; ?> >House wife</option>
 					<option value="teacher"<?php echo OptionCheck("teacher", "sprofession") ? "selected" : ''; ?> >Teacher</option>
 					<option value="businessman"<?php echo OptionCheck("businessman", "sprofession") ? "selected" : ''; ?> >businessman</option>
@@ -338,8 +345,8 @@ if(isset($_POST['submit1']))
 		<tr>
 			<td>Merital Statue: <font color="red">*</font></td>-
 			<td>
-				<select name="meritalstatus">
-					<option value="-select-">-SELECT-</option>
+				<select name="meritalstatus" required>
+					<option value="">-SELECT-</option>
 					<option value="married"<?php echo OptionCheck("married", "meritalstatus") ? "selected" : ''; ?> >Married</option>
 					<option value="unmarried"<?php echo OptionCheck("unmarried", "meritalstatus") ? "selected" : ''; ?> >Unmarried</option>
 				</select>
@@ -350,8 +357,8 @@ if(isset($_POST['submit1']))
 		<tr>
 			<td>Applicants's <br>profession <font color="red">*</font></td>
 			<td>
-				<select name="applicantsprofession">
-					<option value="-select-">-SELECT-</option>
+				<select name="applicantsprofession" required>
+					<option value="">-SELECT-</option>
 					<option value="housewife"<?php echo OptionCheck("housewife", "applicantsprofession") ? "selected" : ''; ?> >House wife</option>
 					<option value="teacher"<?php echo OptionCheck("teacher", "applicantsprofession") ? "selected" : ''; ?> >Teacher</option>
 					<option value="businessman"<?php echo OptionCheck("businessman", "applicantsprofession") ? "selected" : ''; ?> >businessman</option>
@@ -359,7 +366,7 @@ if(isset($_POST['submit1']))
 				</select>
 			</td>
 			<td>Road/Block/Sector:</td>
-			<td><input type="text" name="perroad/block/sector" value="<?php echo isset($_SESSION['perroad/block/sector']) ? $_SESSION['perroad/block/sector'] : ''; ?>" /></td>
+			<td><input type="text" name="perroad/block/sector" value="<?php echo isset($_SESSION['perroadblocksector']) ? $_SESSION['perroadblocksector'] : ''; ?>" /></td>
 			
 			
 		</tr>
@@ -376,7 +383,7 @@ if(isset($_POST['submit1']))
 			</td>
 			<td>District <font color="red">*</font></td>
 			<td>
-				<select name="perdistrict">
+				<select name="perdistrict" required>
 					<option value="-select-">-SELECT-</option>
 					<option value="dhaka"<?php echo OptionCheck("dhaka", "perdistrict") ? "selected" : ''; ?> >Dhaka</option>
 					<option value="barguna"<?php echo OptionCheck("barguna", "perdistrict") ? "selected" : ''; ?> >Barguna</option>
@@ -390,8 +397,8 @@ if(isset($_POST['submit1']))
 		<tr>
 			<td>Birth District <font color="red">*</font></td>
 			<td>
-				<select name="birthdistrict">
-					<option value="-select-">-SELECT-</option>
+				<select name="birthdistrict" required>
+					<option value="">-SELECT-</option>
 					<option value="dhaka"<?php echo OptionCheck("dhaka", "birthdistrict") ? "selected" : ''; ?> >Dhaka</option>
 					<option value="barguna"<?php echo OptionCheck("barguna", "birthdistrict") ? "selected" : ''; ?> >Barguna</option>
 					<option value="barisal"<?php echo OptionCheck("barisal", "birthdistrict") ? "selected" : ''; ?> >Barisal</option>

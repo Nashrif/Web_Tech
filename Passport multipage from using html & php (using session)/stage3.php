@@ -29,7 +29,7 @@ function data_sanitization($data)
     $birthidno= $_SESSION['birthidno'];
     $_SESSION['applicationID']= substr($birthidno, 9).rand(15,1000);
  }
- if (isset($_POST['submit3'])) 
+if (isset($_POST['sub3'])) 
 {
 	$_SESSION['currency']= data_sanitization($_POST['currency']); 
 	$_SESSION['ammount']= data_sanitization($_POST['ammount']); 
@@ -38,19 +38,19 @@ function data_sanitization($data)
 	$_SESSION['dateofpayment']= data_sanitization($_POST['dateofpayment']); 
 	$_SESSION['paymenttype']= data_sanitization($_POST['paymenttype']); 
 	$_SESSION['recieptno']= data_sanitization($_POST['recieptno']); 
-    if (!preg_match("/^[0-9]{1,20}$/", $_POST['receiptNo'])) 
+    if (!preg_match("/^[0-9]{1,10}$/", $_POST['ammount'])) 
     {
-      $_SESSION['error_form3'] = "Numbers Only.";
+      $_SESSION['error_form3'] = "Numbers Only";
       header("location: stage3.php");
-    } 
+    }  
     else
-    {
+	{
       foreach ($_POST as $key => $value) 
       {
         $_SESSION['post'][$key] = $value;
       }
 
-      header("Location: finalstage.php");
+      header("Location:stage4.php");
     }	
 	
 }
@@ -117,7 +117,7 @@ function data_sanitization($data)
 		</tr>
 		<tr>
 			<td>Name of Bank:</td>
-				<td>
+			<td>
 				<select name="nameofbank">
 					<option value="-select-">-SELECT-</option>
 					<option value="bankasia"<?php echo OptionCheck("bankasia", "nameofbank") ? "selected" : ''; ?> >Bank Asia</option>
@@ -143,7 +143,15 @@ function data_sanitization($data)
 			<td></td>
 			<td></td>
 			<td></td>
-			<td><button type="submit" formaction="stage2.php">PREVIOUS PAGE</button><input type="submit" name="submit3" value="SAVE & NEXT"></td>
+										 <?php
+
+								 if (!empty($_SESSION['error_form3'])) 
+								 {
+								 	echo "<p><span id=\"error\">$_SESSION[error_form3]</span></p>";
+								 }
+
+							 ?>
+			<td><button type="submit" formaction="stage2.php">PREVIOUS PAGE</button><input type="submit" name="sub3" value="SAVE & NEXT"></td>
 		
 		</tr>
 		

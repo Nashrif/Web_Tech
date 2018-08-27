@@ -1,0 +1,327 @@
+<html> 
+<head> 
+ <title> Poker Hand game </title>
+	<style>
+		table#t1
+		{border: 1px solid black;border-collapse: collapse;width:60%;border-spacing: 5px;text-align: center;}
+		table#t2
+		{border: 1px solid black;border-collapse: collapse;width:60%;text-align: center;}
+		td#t2
+		{border: 5px solid black;border-collapse: collapse;text-align: center;}
+		img
+		{width:80px;height:80px; padding: 5px;}
+	</style>
+	<script TYPE="text/javascript">
+		
+		function rollDice() 
+		{
+			var die1, die2, die3, die4, die5, a;
+			die1 = Math.floor( 1 + Math.random() * 13 );
+			die2 = Math.floor( 1 + Math.random() * 13 );
+			die3 = Math.floor( 1 + Math.random() * 13 );
+			die4 = Math.floor( 1 + Math.random() * 13 );
+			die5 = Math.floor( 1 + Math.random() * 13 );
+			a1 = Math.floor( 1 + Math.random() * 4 );
+			a2 = Math.floor( 1 + Math.random() * 4 );
+			a3 = Math.floor( 1 + Math.random() * 4 );
+			a4 = Math.floor( 1 + Math.random() * 4 );
+			a5 = Math.floor( 1 + Math.random() * 4 );
+			
+			var arr=['e', 'c', 'd', 'h', 's'];
+			
+			document.getElementById("img1").src = "img/"+die1+arr[a1]+".gif";
+			document.getElementById("img2").src = "img/"+die2+arr[a2]+".gif";
+			document.getElementById("img3").src = "img/"+die3+arr[a3]+".gif";
+			document.getElementById("img4").src = "img/"+die4+arr[a4]+".gif";
+			document.getElementById("img5").src = "img/"+die5+arr[a5]+".gif";
+			
+			
+			/////////---------   first pair and double pair rule ------------------------
+			
+			var pair=0, jpair=0, check=0, triple=0, four=0;
+			
+			document.getElementById("status").innerHTML = "";
+			
+			var onepair=false, twopairs=false, threekind=false, straight=false, flush=false,
+			fullhouse=false, fourkind=false, straightflush=false;
+			
+			if(a1==a2 && a2==a3 && a3==a4 && a4==a5)
+			{
+				flush=true;
+				//document.getElementById("status").innerHTML = "Flush";
+			}
+			else if(die1>die2 && die2>die3 && die3>die4 && die4>die5)
+			{
+				check=13;
+				if(die1==check)
+					{check=12;if(die2==check)
+						{check=11;if(die3==check)
+								{check=10;if(die4==check)
+									{check=9;if(die5==check)
+										{straight=true;}}}}}
+				check=12;
+				if(die1==check)
+					{check=11;if(die2==check)
+						{check=10;if(die3==check)
+								{check=9;if(die4==check)
+									{check=8;if(die5==check)
+										{straight=true;}}}}}
+				check=11
+				if(die1==check)
+					{check=10;if(die2==check)
+						{check=9;if(die3==check)
+								{check=8;if(die4==check)
+									{check=7;if(die5==check)
+										{straight=true;}}}}}
+				check=10
+				if(die1==check)
+					{check=9;if(die2==check)
+						{check=8;if(die3==check)
+								{check=7;if(die4==check)
+									{check=6;if(die5==check)
+										{straight=true;}}}}}
+				check=9
+				if(die1==check)
+					{check=8;if(die2==check)
+						{check=7;if(die3==check)
+								{check=6;if(die4==check)
+									{check=5;if(die5==check)
+										{straight=true;}}}}}
+				check=8
+				if(die1==check)
+					{check=7;if(die2==check)
+						{check=6;if(die3==check)
+								{check=5;if(die4==check)
+									{check=4;if(die5==check)
+										{straight=true;}}}}}
+				check=7
+				if(die1==check)
+					{check=6;if(die2==check)
+						{check=5;if(die3==check)
+								{check=4;if(die4==check)
+									{check=3;if(die5==check)
+										{straight=true;}}}}}
+				check=6
+				if(die1==check)
+					{check=5;if(die2==check)
+						{check=4;if(die3==check)
+								{check=3;if(die4==check)
+									{check=2;if(die5==check)
+										{straight=true;}}}}}
+				check=5
+				if(die1==check)
+					{check=4;if(die2==check)
+						{check=3;if(die3==check)
+								{check=2;if(die4==check)
+									{check=1;if(die5==check)
+										{straight=true;}}}}}
+				check=4
+				if(die1==check)
+					{check=3;if(die2==check)
+						{check=2;if(die3==check)
+								{check=1;if(die4==check)
+									{check=0;if(die5==check)
+										{straight=true;}}}}}
+				if(straight)
+					{
+						if(a1==a2 && a2==a3 && a3==a4 && a4==a5)
+							{
+								straightflush=true;
+								//document.getElementById("status").innerHTML = "Flush";
+							}
+					}
+				//document.getElementById("status").innerHTML = "Straight";
+			}
+			else if(die1 > check || die2 > check || die3 > check || die4 > check || die5 > check)
+			{
+				check=10;
+				if(die1>check){
+					if(die1 == die2 || die1 == die3 || die1 == die4 || die1 == die5)
+						jpair++;
+				}
+				else if(die1 == die2 || die1 == die3 || die1 == die4 || die1 == die5)
+						{pair++;}
+				if(die2>check){
+					if(die2 == die3 || die2 == die4 || die2 == die5)
+						{jpair++;}
+				}
+				else if(die2 == die3 || die2 == die4 || die2 == die5)
+						{pair++;}
+				if(die3>check){	
+					if(die3 == die4 || die3 == die5)
+						{jpair++;}
+				}
+				else if(die3 == die4 || die3 == die5)
+						{pair++;}
+				if(die4>check){	
+					if(die4 == die5)
+						{jpair++;}
+				}
+				else if(die4 == die5)
+						{pair++;}
+				
+				check = 0;
+				if(pair > check || jpair > check) //-----------  triple rule ---------------------
+				{
+					if(die1 == die2)
+						{ if(die2 == die3 || die2 == die4 || die2 == die5){ triple++; } }
+					if(die1 == die3)
+						{ if(die3 == die4 || die3 == die5){ triple++; } }
+					if(die1 == die4)
+						{ if(die4 == die5){ triple++; } }
+						
+					if(die2 == die3)
+						{ if(die3 == die4 || die3 == die5){ triple++; } }
+					if(die2 == die4)
+						{ if(die4 == die5){ triple++; } }
+						
+					if(die3 == die4)
+						{ if(die4 == die5){ triple++; } }
+					
+					check=1;
+					if(triple >= check) //----------  Four of a kind --------------------------
+						{
+							if(die1==die2 && die2==die3)
+							{
+								if(die4==die5)
+									fullhouse=true;
+							}
+							if(die1==die2 && die2==die4)
+							{
+								if(die3==die5)
+									fullhouse=true;
+							}
+							if(die1==die2 && die2==die5)
+							{
+								if(die3==die4)
+									fullhouse=true;
+							}
+							if(die1==die3 && die3==die4)
+							{
+								if(die2==die5)
+									fullhouse=true;
+							}
+							if(die1==die3 && die3==die5)
+							{
+								if(die2==die4)
+									fullhouse=true;
+							}
+							if(die1==die4 && die4==die5)
+							{
+								if(die2==die3)
+									fullhouse=true;
+							}
+							if(die2==die3 && die3==die4)
+							{
+								if(die1==die5)
+									fullhouse=true;
+							}
+							if(die2==die4 && die4==die5)
+							{
+								if(die1==die3)
+									fullhouse=true;
+							}
+							if(die3==die4 && die4==die5)
+							{
+								if(die1==die2)
+									fullhouse=true;
+							}
+							
+							if(die1 == die2)
+								{ 
+									if(die2 == die3 || die2 == die4){ if(die3 == die4 || die3 == die5 || die4 == die5){ four++; } }
+								}
+							if(die1 == die3)
+								{ 
+									if(die3 == die4){ if(die4 == die5){ four++; } }
+								}
+								
+							if(die2 == die3)
+								{ 
+									if(die3 == die4){ if(die4 == die5){ four++; } }
+								}
+							
+							if(four >= check){
+									fourkind=true;
+									//document.getElementById("status").innerHTML = "Four of a kind";
+							}
+							else if(triple >= check)
+								{threekind=true;
+									//document.getElementById("status").innerHTML = "Three of a kind";
+									}					
+						}	
+					else
+					{
+						check=0;
+						if(pair > jpair){
+							jpair=1;
+							if(pair > jpair)
+								{
+									twopairs=true;
+									//document.getElementById("status").innerHTML = pair + " pairs";
+								}
+						}
+						else if(jpair > check)
+							{
+								onepair=true;
+								//document.getElementById("status").innerHTML = jpair + " jpair";
+							}
+					}
+						
+				}
+			}
+			
+			//document.getElementById("status").innerHTML = pair + " pair" +triple+ " triple";
+			if(straightflush)
+				document.getElementById("status").innerHTML = "Straight Flush";
+			else if(fourkind)
+				document.getElementById("status").innerHTML = "Four of a kind";
+			else if(fullhouse)
+				document.getElementById("status").innerHTML = "Full House";
+			else if(flush)
+				document.getElementById("status").innerHTML = "Flush";
+			else if(straight)
+				document.getElementById("status").innerHTML = "Straight";
+			else if(threekind)
+				document.getElementById("status").innerHTML = "Three of a kind";
+			else if(twopairs)
+				document.getElementById("status").innerHTML = pair + " pairs";
+			else if(onepair)
+				document.getElementById("status").innerHTML = jpair + " pair";
+			
+		}
+	</script>
+</head> 
+<body> 
+	<form>
+		<table id="t1" align="center">
+			<tr>
+				<td colspan="3"><h2 style="color:red" align="center"><u>Poker Hand</u></h2></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<table id="t2" align="center">
+						<tr>
+							<td id="t2" ><img id="img1" src="img/back.gif" style="height:120px;width:80px;"></td> 
+							<td id="t2" ><img id="img2" src="img/back.gif" style="height:120px;width:80px;"></td>
+							<td id="t2" ><img id="img3" src="img/back.gif" style="height:120px;width:80px;"></td>
+							<td id="t2" ><img id="img4" src="img/back.gif" style="height:120px;width:80px;"></td>
+							<td id="t2" ><img id="img5" src="img/back.gif" style="height:120px;width:80px;"></td>
+						</tr>
+						<tr>
+							<td id="t2" align="center" colspan="5">
+								<input type="button" name="roll" value="Shuffle!" style="width:550px;height:50px;background-color:yellow;" onclick="rollDice()">
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td><h2 align="left" style="font-size: 200%">Status :</h2></td>
+				<td colspan="2"><h2 style="color:red" align="left"><div id="status" style="font-size: 100%"></div></h2></td>
+			</tr>
+			
+		</table>
+	</form>
+</body> 
+</html>  
